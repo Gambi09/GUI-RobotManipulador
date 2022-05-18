@@ -1,0 +1,10 @@
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.csproj.AssemblyReference.cache
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.FormRobot.resources
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.Properties.Resources.resources
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.csproj.GenerateResource.cache
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.csproj.CoreCompileInputs.cache
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\ControlRobotMnipuldor.exe.config
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\ControlRobotMnipuldor.exe
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\ControlRobotMnipuldor.pdb
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.exe
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\obj\Debug\ControlRobotMnipuldor.pdb
