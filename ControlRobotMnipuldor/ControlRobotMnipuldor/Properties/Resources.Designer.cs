@@ -83,6 +83,16 @@ namespace ControlRobotMnipuldor.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CaracolPascalTrayec {
+            get {
+                object obj = ResourceManager.GetObject("CaracolPascalTrayec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CD {
             get {
                 object obj = ResourceManager.GetObject("CD", resourceCulture);
@@ -156,6 +166,16 @@ namespace ControlRobotMnipuldor.Properties {
         internal static System.Drawing.Bitmap red_led_on_md {
             get {
                 object obj = ResourceManager.GetObject("red-led-on-md", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usb_port_icon_9 {
+            get {
+                object obj = ResourceManager.GetObject("usb-port-icon-9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
