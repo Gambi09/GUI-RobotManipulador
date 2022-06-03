@@ -146,7 +146,8 @@ namespace ControlRobotMnipuldor
             return fbColor;
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+
+        private void FormRobot_Paint(object sender, PaintEventArgs e)
         {
             //-> SMOOTH OUTER BORDER
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -167,8 +168,9 @@ namespace ControlRobotMnipuldor
             DrawPath(rectBottomRight, e.Graphics, fbColors.BottomRightColor);
             //-> SET ROUNDED REGION AND BORDER
             FormRegionAndBorder(this, borderRadius, e.Graphics, borderColor, borderSize);
-        }
 
+        }
+       
 
         private void panelContainer_Paint(object sender, PaintEventArgs e)
         {
@@ -176,15 +178,15 @@ namespace ControlRobotMnipuldor
         }
 
 
-        private void Form1_ResizeEnd(object sender, EventArgs e)
+        private void FormRobot_ResizeEnd(object sender, EventArgs e)
         {
             this.Invalidate();
         }
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void FormRobot_SizeChanged(object sender, EventArgs e)
         {
             this.Invalidate();
         }
-        private void Form1_Activated(object sender, EventArgs e)
+        private void FormRobot_Activated(object sender, EventArgs e)
         {
             this.Invalidate();
         }
@@ -616,6 +618,12 @@ namespace ControlRobotMnipuldor
 
 
             }
+        }
+
+        private void panelTopMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
