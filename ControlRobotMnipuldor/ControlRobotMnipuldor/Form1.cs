@@ -528,7 +528,7 @@ namespace ControlRobotMnipuldor
 
                 if (button_on_robot.Text == "ON")
                 {
-                    serialPort1.Write("0");
+                    serialPort1.Write("1");
                     button_on_robot.Text = "OFF";
                     pictureBox_robot.Image = Properties.Resources.red_led_on_md;
                     predeteminadaToolStripMenuItem.Enabled = true;
@@ -537,7 +537,7 @@ namespace ControlRobotMnipuldor
                 }
                 else if (button_on_robot.Text == "OFF")
                 {
-                    serialPort1.Write("1");
+                    serialPort1.Write("0");
                     button_on_robot.Text = "ON";
                     pictureBox_robot.Image = Properties.Resources.red_led_off_md;
                     predeteminadaToolStripMenuItem.Enabled = false;
