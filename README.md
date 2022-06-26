@@ -1,5 +1,5 @@
 # GUI-RobotManipulador
-GUI desarrollda con c# para windows, coneccion con ARDUINO
+GUI desarrollda con c# para windows, conexión con ARDUINO Mega 
 
 Desarrollada en VIsualStrudio 2019 
 
