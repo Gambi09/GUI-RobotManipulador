@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace ControlRobotMnipuldor
 {
-    public partial class FormRobot : Form
+    public partial class FormRobot : Form, Interface1
     {
 
 
@@ -21,11 +22,21 @@ namespace ControlRobotMnipuldor
         private int borderRadius = 20;
         private int borderSize = 2;
         private Color borderColor = Color.FromArgb(128, 128, 255);
-        private int valueEncoderQ1;
-        private int valueEncoderQ2;
-        private int valueEncoderQ3;
+        private float valueEncoderQ1;
+        private float valueEncoderQ2;
+        private float valueEncoderQ3;
         private int valueConfiguration;
         private string serialData;
+        private int tolerance = 15;
+        private const int WM_NCHITTEST = 132;
+        private const int HTBOTTOMRIGHT = 17;
+        private Rectangle sizeGripRectangle;
+        private string configuracion = "NO";
+        private float minQ2 = 0;
+        private float maxQ2 = 0;
+        private int minQ3 = 0;
+        private int maxQ3 = 0;
+        
         //Constructor
         public FormRobot()
         {
@@ -215,6 +226,7 @@ namespace ControlRobotMnipuldor
             {
                 try
                 {
+                    serialPort1.WriteLine("0"); 
                     serialPort1.Close();
                 }
                 catch (Exception error)
@@ -272,7 +284,15 @@ namespace ControlRobotMnipuldor
         {
             configuracion = "Cilindrica";
             configuration = 1;
+            
+            minQ2 = 24.3f;
+            maxQ2 = 45.3f;
+
+            minQ3 = 0;
+            maxQ3 = 140;
+
             changeConfiguration();
+
             if (valueConfiguration == configuration) 
             {
                 predeteminadaToolStripMenuItem.Enabled = true;
@@ -283,6 +303,12 @@ namespace ControlRobotMnipuldor
         {
             configuracion = "Angular";
             configuration = 2;
+            minQ2 = 10;
+            maxQ2 = 90;
+
+            minQ3 = -80;
+            maxQ3 = 80;
+
             changeConfiguration();
         }
 
@@ -290,6 +316,12 @@ namespace ControlRobotMnipuldor
         {
             configuracion = "Esferica";
             configuration = 3;
+            minQ2 = 10;
+            maxQ2 = 90;
+
+            minQ3 = 0;
+            maxQ3 = 140;
+
             changeConfiguration();
         }
 
@@ -300,11 +332,7 @@ namespace ControlRobotMnipuldor
         }
 
 
-        private int tolerance = 15;
-        private const int WM_NCHITTEST = 132;
-        private const int HTBOTTOMRIGHT = 17;
-        private Rectangle sizeGripRectangle;
-        private string configuracion= "NO";
+        
 
         protected override void WndProc(ref Message m)
         {
@@ -398,14 +426,28 @@ namespace ControlRobotMnipuldor
         
         private void articulacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FormArticulacion());
+            FormArticulacion articulacion = new FormArticulacion(this);
+            articulacion.labelConfiguracionArt.Text = configuracion;
+            articulacion.trackBarQ2.Maximum = (int) maxQ2;
+            articulacion.trackBarQ2.Minimum = (int) minQ2;
+
+            articulacion.trackBarQ3.Maximum = maxQ3;
+            articulacion.trackBarQ3.Minimum = minQ3;
+            articulacion.minQ2 = this.minQ2;
+            articulacion.maxQ2 = this.maxQ2;
+            articulacion.minQ3 = this.minQ3;
+            articulacion.maxQ3 = this.maxQ3;
+            articulacion.configuracion = this.configuration;
+
+            AbrirFormEnPanel(articulacion);
         }
 
         private void buttonCinematicDirect_Click(object sender, EventArgs e)
         {
             hideSubMenu();
             buttonCinematicDirect.BackgroundColor = Color.DarkViolet;
-            //buttonCinemticInverse.BackColor = Color.FromArgb(24, 30, 54);
+            buttonCinemticInverse.BackgroundColor = Color.FromArgb(50, 50, 54);
+            buttonMovement.BackgroundColor = Color.FromArgb(50, 50, 54);
             FormCinematicDirect cinemticirecta = new FormCinematicDirect();
             cinemticirecta.labelConfiguracion.Text = configuracion;
             cinemticirecta.configurtion = this.configuration;
@@ -478,6 +520,7 @@ namespace ControlRobotMnipuldor
                         serialPort1.Open();
                         labelConnection.Location = new Point(161, 39);
                         labelConnection.Text = "OFF";
+                        label1.Text = serialData;
 
                         button_on_robot.Text = "ON";
 
@@ -485,7 +528,10 @@ namespace ControlRobotMnipuldor
                         {
                             button_on_robot.Enabled = true;
                         }
-                        else button_on_robot.Enabled = false;
+                        else {
+                            button_on_robot.Enabled = false;
+                            MessageBox.Show("No coincide con la configuracion del robot o esta mal colocado");
+                        }
                         pictureBox_connect.Image = Properties.Resources.green_led_on_md;
                         progressBar_CON_ARD.Value = 100;
 
@@ -499,7 +545,7 @@ namespace ControlRobotMnipuldor
 
                 else if (labelConnection.Text == "OFF")
                 {
-                    serialPort1.Write("0");
+                    serialPort1.WriteLine("0");
                     serialPort1.Close();
                     labelConnection.Location = new Point(214, 39);
                     labelConnection.Text = "ON";
@@ -528,18 +574,22 @@ namespace ControlRobotMnipuldor
 
                 if (button_on_robot.Text == "ON")
                 {
-                    serialPort1.Write("1");
+                    serialPort1.WriteLine("1");
                     button_on_robot.Text = "OFF";
                     pictureBox_robot.Image = Properties.Resources.red_led_on_md;
                     predeteminadaToolStripMenuItem.Enabled = true;
                     rjDropdownMenu1.Enabled = true;
+                    
 
                 }
                 else if (button_on_robot.Text == "OFF")
                 {
-                    serialPort1.Write("0");
+                    
+                    
+                    string m = "0";
                     button_on_robot.Text = "ON";
                     pictureBox_robot.Image = Properties.Resources.red_led_off_md;
+                    serialPort1.WriteLine(m);
                     predeteminadaToolStripMenuItem.Enabled = false;
                     rjDropdownMenu1.Enabled = false;
                 }
@@ -553,12 +603,17 @@ namespace ControlRobotMnipuldor
         private void buttonCinemticInverse_Click_1(object sender, EventArgs e)
         {
             hideSubMenu();
+            buttonCinematicDirect.BackgroundColor = Color.FromArgb(50, 50, 54);
+            buttonMovement.BackgroundColor = Color.FromArgb(50, 50, 54);
+            buttonCinemticInverse.BackgroundColor = Color.DarkViolet;
             AbrirFormEnPanel(new CinemticInverse());
         }
 
         private void buttonMovement_Click(object sender, EventArgs e)
         {
             hideSubMenu();
+            buttonCinematicDirect.BackgroundColor = Color.FromArgb(50, 50, 54);
+            buttonCinemticInverse.BackgroundColor = Color.FromArgb(50, 50, 54);
             rjDropdownMenu1.Show(buttonMovement, buttonMovement.Width, 0);
         }
 
@@ -569,7 +624,7 @@ namespace ControlRobotMnipuldor
 
         private void buttonCinematicDirect_MouseHover(object sender, EventArgs e)
         {
-            buttonCinematicDirect.BackgroundColor = Color.DarkViolet;
+
         }
 
         private void ChangeColorsMenuBar(Button boton) 
@@ -590,13 +645,16 @@ namespace ControlRobotMnipuldor
             //trayectoria.configurtion = this.configuration;
             AbrirFormEnPanel(trayectoria);
             //AbrirFormEnPanel(new FormSeguimientoTrayectoriaPredeterminado());
-            trayectoria.circularProgressBarQ1.Value = valueEncoderQ1;
+            serialPort1.Write("T");
+            trayectoria.label1.Text = "Q1: "+ Convert.ToString(valueEncoderQ1) + 
+                " Q2: "+ Convert.ToString(valueEncoderQ3)+ " Q3: "+ Convert.ToString(valueEncoderQ3);
+            trayectoria.circularProgressBarQ1.Value = (int) valueEncoderQ1;
             trayectoria.circularProgressBarQ1.Text = Convert.ToString(valueEncoderQ1);
 
-            trayectoria.circularProgressBarQ2.Value = valueEncoderQ2;
+            trayectoria.circularProgressBarQ2.Value = (int) valueEncoderQ2;
             trayectoria.circularProgressBarQ2.Text = Convert.ToString(valueEncoderQ2);
 
-            trayectoria.circularProgressBarQ1.Value = valueEncoderQ3;
+            trayectoria.circularProgressBarQ1.Value = (int) valueEncoderQ3;
             trayectoria.circularProgressBarQ1.Text = Convert.ToString(valueEncoderQ3);
         }
 
@@ -607,15 +665,16 @@ namespace ControlRobotMnipuldor
             {
 
                 serialData = serialPort1.ReadLine();
-
+                
                 string[] data = serialData.Split('*');
-
+                string datatexto = serialData;
 
                 valueConfiguration = Convert.ToInt32(data [0]);
                 valueEncoderQ1 = Convert.ToInt32(data[1]);
                 valueEncoderQ1 = Convert.ToInt32(data[2]);
                 valueEncoderQ1 = Convert.ToInt32(data[3]);
-
+                textBox1.Text = datatexto;
+                label1.Text = datatexto;
 
             }
         }
@@ -624,6 +683,44 @@ namespace ControlRobotMnipuldor
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            
+            panelShow.BringToFront();
+            panelShow.Show();
+        }
+
+        private void serialPort1_DataReceived_1(object sender, SerialDataReceivedEventArgs e)
+        {
+            while (serialPort1.IsOpen && serialPort1.BytesToRead > 0)
+            {
+
+                serialData = serialPort1.ReadLine();
+
+                string[] data = serialData.Split('*');
+                string datatexto = serialData;
+                
+                    valueConfiguration = Convert.ToInt32(data[0]);
+                    valueEncoderQ1 = float.Parse(data[1], CultureInfo.InvariantCulture.NumberFormat);
+                    valueEncoderQ2 = float.Parse(data[2], CultureInfo.InvariantCulture.NumberFormat); 
+                    valueEncoderQ3 = float.Parse(data[3], CultureInfo.InvariantCulture.NumberFormat);
+
+                //textBox1.Text = datatexto;
+                //label1.Text = datatexto;
+
+            }
+        }
+
+        public void TrasladoInfo(string data)
+        {
+            serialPort1.Write(data);
+        }
+
+        private void maskedTextBoxSerial_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

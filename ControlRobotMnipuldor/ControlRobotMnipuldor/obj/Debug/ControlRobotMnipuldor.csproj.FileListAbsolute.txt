@@ -17,3 +17,17 @@ C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\
 C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\CircularProgressBar.dll
 C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\WinFormAnimation.dll
 C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\CircularProgressBar.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.Modules.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.SQLite.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.Wpf.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Dynamic.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Scripting.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Scripting.Metadata.dll
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.Modules.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.SQLite.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\IronPython.Wpf.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Dynamic.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Scripting.xml
+C:\Users\Hp\OneDrive\Desktop\GUI-TT\ControlRobotMnipuldor\ControlRobotMnipuldor\bin\Debug\Microsoft.Scripting.Metadata.xml

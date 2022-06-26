@@ -39,6 +39,27 @@
     <Reference Include="Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.2\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="IronPython, Version=2.7.12.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.12\lib\net45\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.12.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.12\lib\net45\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=2.7.12.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.12\lib\net45\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=2.7.12.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.12\lib\net45\IronPython.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.3.1.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.1\lib\net45\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.3.1.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.1\lib\net45\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.3.1.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.3.1\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -86,6 +107,7 @@
     <Compile Include="FormSeguimientoTrayectoriaPredeterminado.Designer.cs">
       <DependentUpon>FormSeguimientoTrayectoriaPredeterminado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\RJControllers\RJButton\RJButton.cs">
@@ -179,6 +201,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CaracolPascalTrayec.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prismatica.png" />
+    <None Include="Resources\Rotacional.png" />
+    <None Include="Resources\inverse1.jpg" />
+    <None Include="Resources\move1.jpg" />
+    <None Include="Resources\Matriz1.jpg" />
+    <None Include="Resources\CONEXICON1.jpg" />
+    <None Include="Resources\CONEXICON.jpg" />
+    <None Include="Resources\move.jpg" />
+    <None Include="Resources\inverse.jpg" />
+    <None Include="Resources\Matriz.jpg" />
+    <None Include="Resources\CI.jpg" />
+    <None Include="Resources\DH-Esferica1.jpeg" />
+    <None Include="Resources\DH-Angular.jpeg" />
+    <None Include="Resources\1200px-HD_transparent_picture.png" />
+    <Content Include="Resources\DH-Angular.png" />
+    <Content Include="Resources\DH-Angular_2.jpeg" />
+    <None Include="Resources\DH-Cilindrica.jpeg" />
+    <Content Include="Resources\DH-Cilindrica_2.jpeg" />
+    <Content Include="Resources\DH-Esferica.jpeg" />
+    <Content Include="Resources\DH-Esferica_2.jpeg" />
+    <Content Include="Resources\DH_Cilindrica.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

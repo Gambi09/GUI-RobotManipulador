@@ -6,34 +6,45 @@ import math
 
 
 
-def function_doSeguimiento(configuracion, archivo):
+def function_doSeguimiento(configuracion):
 
     x = []
     y = []
     z = []
 
-    txx =  empty((1,3))    
+    txx =  empty((1,3))
+    axx = empty((1,3))
+     
 
-    with open ("cuadrado.txt") as file_object:
+    with open ("C:\\Users\\Hp\\OneDrive\\Desktop\\GUI-TT\\TrayectoriaPrueba\\tray_cuadrado_Cilindrico.txt") as file_object:
         for line in file_object.readlines():
             line = line.split()
-            txx  = append(txx, array[float(line[0]), float(line[1]), float(line[2])],axis = 0)
+            point = [float(line[0]), float(line[1]), float(line[2])]
+            txx  = append(txx,[point],axis = 0)
             x.append(float(line[0]))
             y.append(float(line[1]))
             z.append(float(line[2]))
+        for p in txx:
+            
+            ss= function_CinematicaInversa(configuracion, p[0],p[1],p[2])
+            axx  = append(axx,[ss],axis = 0)
+            print(axx)
+            
 
       
-        
+    '''    
     [tam1, tam2]=[len(x),3]
-    ajuste1=zeros(tam1,tam2)
+    print (len(x))
+    ajuste1=zeros((tam1,3))
     ajuste1[:,2]=-2
-    ajuste2=zeros(tam1,tam2)
+    ajuste2=zeros((tam1,3))
     ajuste2[:,1]=4
-    ajuste3=zeros(tam1,tam2)
+    ajuste3=zeros((tam1,3))
     ajuste3[:,3]=6
-
-    txx_aj=txx+ajuste1+ajuste2+ajuste3
-
+    '''
+    
+    txx_aj=txx
+    print(axx)
     '''
     path_p_plot=txx_aj; 
 
@@ -64,9 +75,9 @@ def function_CinematicaInversa(configuracion, x, y, z):
 
 def function_cilindrica (L2,L3,h0,h1,h2,x3,y3,z3):
     
-    q1=math.atan2(-x3/math.sqrt(x3^2+y3^2),y3/math.sqrt(x3^2+y3^2))
+    q1=math.atan2(-x3/math.sqrt(x3**2+y3**2),y3/math.sqrt(x3**2+y3**2))
     q2=z3-(h0+h1+h2)
-    q3=(x3^2+y3^2)/math.sqrt(x3^2+y3^2)-(L2+L3)
+    q3=(x3**2+y3**2)/math.sqrt(x3**2+y3**2)-(L2+L3)
     
     spaceArticular = [q1,q2,q3]
     return spaceArticular
@@ -110,4 +121,4 @@ def function_angular (L1,L2,L3,h0,h1,x3,y3,z3):
     return spaceArticular
 
 
-function_doSeguimiento(1, "momo")
+function_doSeguimiento(1)

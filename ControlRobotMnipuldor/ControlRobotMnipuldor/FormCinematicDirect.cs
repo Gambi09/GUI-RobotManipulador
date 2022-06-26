@@ -25,22 +25,29 @@ namespace ControlRobotMnipuldor
             {
                 case(1):
                     labelConfigurationChosen.Text = "Configuracion";
-                    
+                    pictureBoxRobot.Image = Properties.Resources.DH_Cilindrica;
                     break;
                 case (2):
                     labelConfigurationChosen.Text = "Configuracion";
+                    pictureBoxRobot.Image = Properties.Resources.DH_Angular;
                     break;
 
                 case (3):
                     labelConfigurationChosen.Text = "Configuracion";
+                    pictureBoxRobot.Image = Properties.Resources.DH_Angular;
                     break;
                 default:
-                    labelConfigurationChosen.Text = "Configuracion";
+                    labelConfigurationChosen.Text = "Método Devian Hattenberg (DH)";
+
                     break;
             }
                 
         }
 
+        private void pictureBoxRobot_Click(object sender, EventArgs e)
+        {
+
+        }
     }
             
 }

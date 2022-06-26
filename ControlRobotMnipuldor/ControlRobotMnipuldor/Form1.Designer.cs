@@ -35,6 +35,9 @@ namespace ControlRobotMnipuldor
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelShow = new System.Windows.Forms.Panel();
             this.groupBox_CONF = new System.Windows.Forms.GroupBox();
+            this.checkEsferica = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
+            this.checkAngular = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
+            this.checkCilindrica = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
             this.panelTopMenu = new System.Windows.Forms.Panel();
             this.pictureMinimize = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,6 +46,7 @@ namespace ControlRobotMnipuldor
             this.panelMenuLateral = new System.Windows.Forms.Panel();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.labelConnection = new System.Windows.Forms.Label();
+            this.toggleButtonConnection = new ControlRobotMnipuldor.Resources.RJControllers.RJSlideSwitch.RJToogleButton();
             this.pictureBox_robot = new System.Windows.Forms.PictureBox();
             this.progressBar_CON_ARD = new System.Windows.Forms.ProgressBar();
             this.pictureBox_connect = new System.Windows.Forms.PictureBox();
@@ -50,17 +54,15 @@ namespace ControlRobotMnipuldor
             this.label_robot_estatus = new System.Windows.Forms.Label();
             this.label_estatus_conection = new System.Windows.Forms.Label();
             this.panelSubMenuConnection = new System.Windows.Forms.Panel();
-            this.comboBox_COM = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkEsferica = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
-            this.checkAngular = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
-            this.checkCilindrica = new ControlRobotMnipuldor.Resources.RJControllers.RJRadioButton.RJRadioButton();
-            this.toggleButtonConnection = new ControlRobotMnipuldor.Resources.RJControllers.RJSlideSwitch.RJToogleButton();
             this.button_SerchConecction = new ControlRobotMnipuldor.Resources.RJControllers.RJButton.RJButton();
+            this.comboBox_COM = new System.Windows.Forms.ComboBox();
             this.buttonConnection = new ControlRobotMnipuldor.Resources.RJControllers.RJButton.RJButton();
             this.buttonMovement = new ControlRobotMnipuldor.Resources.RJControllers.RJButton.RJButton();
             this.buttonCinemticInverse = new ControlRobotMnipuldor.Resources.RJControllers.RJButton.RJButton();
             this.buttonCinematicDirect = new ControlRobotMnipuldor.Resources.RJControllers.RJButton.RJButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rjDropdownMenu1 = new ControlRobotMnipuldor.Resources.RJDropdownMenu(this.components);
             this.trayectoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.predeteminadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,8 +81,13 @@ namespace ControlRobotMnipuldor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_robot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_connect)).BeginInit();
             this.panelSubMenuConnection.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.rjDropdownMenu1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived_1);
             // 
             // panelContainer
             // 
@@ -118,6 +125,53 @@ namespace ControlRobotMnipuldor
             this.groupBox_CONF.TabIndex = 10;
             this.groupBox_CONF.TabStop = false;
             this.groupBox_CONF.Text = "CONFIGURACION";
+            // 
+            // checkEsferica
+            // 
+            this.checkEsferica.AutoSize = true;
+            this.checkEsferica.CheckedColor = System.Drawing.Color.Violet;
+            this.checkEsferica.Location = new System.Drawing.Point(87, 173);
+            this.checkEsferica.MinimumSize = new System.Drawing.Size(0, 21);
+            this.checkEsferica.Name = "checkEsferica";
+            this.checkEsferica.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.checkEsferica.Size = new System.Drawing.Size(108, 23);
+            this.checkEsferica.TabIndex = 2;
+            this.checkEsferica.TabStop = true;
+            this.checkEsferica.Text = "Esferica";
+            this.checkEsferica.UnCheckedColor = System.Drawing.Color.Black;
+            this.checkEsferica.UseVisualStyleBackColor = true;
+            this.checkEsferica.CheckedChanged += new System.EventHandler(this.checkEsferica_CheckedChanged);
+            // 
+            // checkAngular
+            // 
+            this.checkAngular.AutoSize = true;
+            this.checkAngular.CheckedColor = System.Drawing.Color.GreenYellow;
+            this.checkAngular.Location = new System.Drawing.Point(87, 115);
+            this.checkAngular.MinimumSize = new System.Drawing.Size(0, 21);
+            this.checkAngular.Name = "checkAngular";
+            this.checkAngular.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.checkAngular.Size = new System.Drawing.Size(105, 23);
+            this.checkAngular.TabIndex = 1;
+            this.checkAngular.TabStop = true;
+            this.checkAngular.Text = "Angular";
+            this.checkAngular.UnCheckedColor = System.Drawing.Color.Black;
+            this.checkAngular.UseVisualStyleBackColor = true;
+            this.checkAngular.CheckedChanged += new System.EventHandler(this.checkAngular_CheckedChanged);
+            // 
+            // checkCilindrica
+            // 
+            this.checkCilindrica.CheckedColor = System.Drawing.Color.LightSeaGreen;
+            this.checkCilindrica.Location = new System.Drawing.Point(87, 52);
+            this.checkCilindrica.MinimumSize = new System.Drawing.Size(0, 21);
+            this.checkCilindrica.Name = "checkCilindrica";
+            this.checkCilindrica.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.checkCilindrica.Size = new System.Drawing.Size(169, 34);
+            this.checkCilindrica.TabIndex = 0;
+            this.checkCilindrica.TabStop = true;
+            this.checkCilindrica.Text = "Cilindrica";
+            this.checkCilindrica.UnCheckedColor = System.Drawing.Color.Black;
+            this.checkCilindrica.UseVisualStyleBackColor = true;
+            this.checkCilindrica.CheckedChanged += new System.EventHandler(this.checkCilindrica_CheckedChanged);
             // 
             // panelTopMenu
             // 
@@ -165,6 +219,7 @@ namespace ControlRobotMnipuldor
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureClose
             // 
@@ -221,6 +276,21 @@ namespace ControlRobotMnipuldor
             this.labelConnection.Size = new System.Drawing.Size(33, 18);
             this.labelConnection.TabIndex = 17;
             this.labelConnection.Text = "ON";
+            // 
+            // toggleButtonConnection
+            // 
+            this.toggleButtonConnection.Location = new System.Drawing.Point(149, 22);
+            this.toggleButtonConnection.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButtonConnection.Name = "toggleButtonConnection";
+            this.toggleButtonConnection.OffBackColor = System.Drawing.Color.White;
+            this.toggleButtonConnection.OffToggleColor = System.Drawing.Color.Silver;
+            this.toggleButtonConnection.OnBackColor = System.Drawing.Color.Goldenrod;
+            this.toggleButtonConnection.OnToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButtonConnection.Size = new System.Drawing.Size(117, 56);
+            this.toggleButtonConnection.SolidStyle = false;
+            this.toggleButtonConnection.TabIndex = 16;
+            this.toggleButtonConnection.UseVisualStyleBackColor = true;
+            this.toggleButtonConnection.CheckedChanged += new System.EventHandler(this.toggleButtonConnection_CheckedChanged_1);
             // 
             // pictureBox_robot
             // 
@@ -292,85 +362,6 @@ namespace ControlRobotMnipuldor
             this.panelSubMenuConnection.Size = new System.Drawing.Size(303, 76);
             this.panelSubMenuConnection.TabIndex = 32;
             // 
-            // comboBox_COM
-            // 
-            this.comboBox_COM.FormattingEnabled = true;
-            this.comboBox_COM.Location = new System.Drawing.Point(164, 24);
-            this.comboBox_COM.Name = "comboBox_COM";
-            this.comboBox_COM.Size = new System.Drawing.Size(120, 21);
-            this.comboBox_COM.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 94);
-            this.panel2.TabIndex = 27;
-            // 
-            // checkEsferica
-            // 
-            this.checkEsferica.AutoSize = true;
-            this.checkEsferica.CheckedColor = System.Drawing.Color.Violet;
-            this.checkEsferica.Location = new System.Drawing.Point(87, 173);
-            this.checkEsferica.MinimumSize = new System.Drawing.Size(0, 21);
-            this.checkEsferica.Name = "checkEsferica";
-            this.checkEsferica.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.checkEsferica.Size = new System.Drawing.Size(108, 23);
-            this.checkEsferica.TabIndex = 2;
-            this.checkEsferica.TabStop = true;
-            this.checkEsferica.Text = "Esferica";
-            this.checkEsferica.UnCheckedColor = System.Drawing.Color.Black;
-            this.checkEsferica.UseVisualStyleBackColor = true;
-            this.checkEsferica.CheckedChanged += new System.EventHandler(this.checkEsferica_CheckedChanged);
-            // 
-            // checkAngular
-            // 
-            this.checkAngular.AutoSize = true;
-            this.checkAngular.CheckedColor = System.Drawing.Color.GreenYellow;
-            this.checkAngular.Location = new System.Drawing.Point(87, 115);
-            this.checkAngular.MinimumSize = new System.Drawing.Size(0, 21);
-            this.checkAngular.Name = "checkAngular";
-            this.checkAngular.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.checkAngular.Size = new System.Drawing.Size(105, 23);
-            this.checkAngular.TabIndex = 1;
-            this.checkAngular.TabStop = true;
-            this.checkAngular.Text = "Angular";
-            this.checkAngular.UnCheckedColor = System.Drawing.Color.Black;
-            this.checkAngular.UseVisualStyleBackColor = true;
-            this.checkAngular.CheckedChanged += new System.EventHandler(this.checkAngular_CheckedChanged);
-            // 
-            // checkCilindrica
-            // 
-            this.checkCilindrica.CheckedColor = System.Drawing.Color.LightSeaGreen;
-            this.checkCilindrica.Location = new System.Drawing.Point(87, 52);
-            this.checkCilindrica.MinimumSize = new System.Drawing.Size(0, 21);
-            this.checkCilindrica.Name = "checkCilindrica";
-            this.checkCilindrica.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.checkCilindrica.Size = new System.Drawing.Size(169, 34);
-            this.checkCilindrica.TabIndex = 0;
-            this.checkCilindrica.TabStop = true;
-            this.checkCilindrica.Text = "Cilindrica";
-            this.checkCilindrica.UnCheckedColor = System.Drawing.Color.Black;
-            this.checkCilindrica.UseVisualStyleBackColor = true;
-            this.checkCilindrica.CheckedChanged += new System.EventHandler(this.checkCilindrica_CheckedChanged);
-            // 
-            // toggleButtonConnection
-            // 
-            this.toggleButtonConnection.Location = new System.Drawing.Point(149, 22);
-            this.toggleButtonConnection.MinimumSize = new System.Drawing.Size(45, 22);
-            this.toggleButtonConnection.Name = "toggleButtonConnection";
-            this.toggleButtonConnection.OffBackColor = System.Drawing.Color.White;
-            this.toggleButtonConnection.OffToggleColor = System.Drawing.Color.Silver;
-            this.toggleButtonConnection.OnBackColor = System.Drawing.Color.Goldenrod;
-            this.toggleButtonConnection.OnToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButtonConnection.Size = new System.Drawing.Size(117, 56);
-            this.toggleButtonConnection.SolidStyle = false;
-            this.toggleButtonConnection.TabIndex = 16;
-            this.toggleButtonConnection.UseVisualStyleBackColor = true;
-            this.toggleButtonConnection.CheckedChanged += new System.EventHandler(this.toggleButtonConnection_CheckedChanged_1);
-            // 
             // button_SerchConecction
             // 
             this.button_SerchConecction.AutoScaleImage = null;
@@ -395,6 +386,14 @@ namespace ControlRobotMnipuldor
             this.button_SerchConecction.UseVisualStyleBackColor = false;
             this.button_SerchConecction.Click += new System.EventHandler(this.button_SerchConecction_Click_1);
             // 
+            // comboBox_COM
+            // 
+            this.comboBox_COM.FormattingEnabled = true;
+            this.comboBox_COM.Location = new System.Drawing.Point(164, 24);
+            this.comboBox_COM.Name = "comboBox_COM";
+            this.comboBox_COM.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_COM.TabIndex = 2;
+            // 
             // buttonConnection
             // 
             this.buttonConnection.AutoScaleImage = null;
@@ -408,11 +407,13 @@ namespace ControlRobotMnipuldor
             this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnection.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonConnection.ForeColor = System.Drawing.Color.White;
-            this.buttonConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnection.Image")));
+            this.buttonConnection.Image = global::ControlRobotMnipuldor.Properties.Resources.CONEXICON1;
+            this.buttonConnection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonConnection.ImageHeight = 60;
             this.buttonConnection.ImageWidht = 60;
             this.buttonConnection.Location = new System.Drawing.Point(0, 295);
             this.buttonConnection.Name = "buttonConnection";
+            this.buttonConnection.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
             this.buttonConnection.Size = new System.Drawing.Size(303, 67);
             this.buttonConnection.TabIndex = 31;
             this.buttonConnection.Text = "Conexión";
@@ -433,11 +434,13 @@ namespace ControlRobotMnipuldor
             this.buttonMovement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMovement.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMovement.ForeColor = System.Drawing.Color.White;
-            this.buttonMovement.Image = ((System.Drawing.Image)(resources.GetObject("buttonMovement.Image")));
+            this.buttonMovement.Image = global::ControlRobotMnipuldor.Properties.Resources.move1;
+            this.buttonMovement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonMovement.ImageHeight = 60;
             this.buttonMovement.ImageWidht = 60;
             this.buttonMovement.Location = new System.Drawing.Point(0, 228);
             this.buttonMovement.Name = "buttonMovement";
+            this.buttonMovement.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
             this.buttonMovement.Size = new System.Drawing.Size(303, 67);
             this.buttonMovement.TabIndex = 30;
             this.buttonMovement.Text = "Movimiento";
@@ -458,14 +461,17 @@ namespace ControlRobotMnipuldor
             this.buttonCinemticInverse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCinemticInverse.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCinemticInverse.ForeColor = System.Drawing.Color.White;
-            this.buttonCinemticInverse.Image = ((System.Drawing.Image)(resources.GetObject("buttonCinemticInverse.Image")));
+            this.buttonCinemticInverse.Image = global::ControlRobotMnipuldor.Properties.Resources.inverse1;
+            this.buttonCinemticInverse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCinemticInverse.ImageHeight = 60;
             this.buttonCinemticInverse.ImageWidht = 60;
             this.buttonCinemticInverse.Location = new System.Drawing.Point(0, 161);
             this.buttonCinemticInverse.Name = "buttonCinemticInverse";
+            this.buttonCinemticInverse.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
             this.buttonCinemticInverse.Size = new System.Drawing.Size(303, 67);
             this.buttonCinemticInverse.TabIndex = 29;
             this.buttonCinemticInverse.Text = "Cinematica Inversa";
+            this.buttonCinemticInverse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCinemticInverse.TextColor = System.Drawing.Color.White;
             this.buttonCinemticInverse.UseVisualStyleBackColor = false;
             this.buttonCinemticInverse.Click += new System.EventHandler(this.buttonCinemticInverse_Click_1);
@@ -483,17 +489,47 @@ namespace ControlRobotMnipuldor
             this.buttonCinematicDirect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCinematicDirect.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCinematicDirect.ForeColor = System.Drawing.Color.White;
-            this.buttonCinematicDirect.Image = ((System.Drawing.Image)(resources.GetObject("buttonCinematicDirect.Image")));
+            this.buttonCinematicDirect.Image = global::ControlRobotMnipuldor.Properties.Resources.Matriz1;
+            this.buttonCinematicDirect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCinematicDirect.ImageHeight = 60;
             this.buttonCinematicDirect.ImageWidht = 60;
             this.buttonCinematicDirect.Location = new System.Drawing.Point(0, 94);
             this.buttonCinematicDirect.Name = "buttonCinematicDirect";
+            this.buttonCinematicDirect.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
             this.buttonCinematicDirect.Size = new System.Drawing.Size(303, 67);
             this.buttonCinematicDirect.TabIndex = 28;
             this.buttonCinematicDirect.Text = "Cinematica Directa";
+            this.buttonCinematicDirect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCinematicDirect.TextColor = System.Drawing.Color.White;
             this.buttonCinematicDirect.UseVisualStyleBackColor = false;
             this.buttonCinematicDirect.Click += new System.EventHandler(this.buttonCinematicDirect_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(303, 94);
+            this.panel2.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(50, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(282, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // rjDropdownMenu1
             // 
@@ -567,13 +603,14 @@ namespace ControlRobotMnipuldor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_robot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_connect)).EndInit();
             this.panelSubMenuConnection.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.rjDropdownMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.IO.Ports.SerialPort serialPort1;
         private Resources.RJDropdownMenu rjDropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem trayectoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem predeteminadaToolStripMenuItem;
@@ -608,6 +645,9 @@ namespace ControlRobotMnipuldor
         private Resources.RJControllers.RJButton.RJButton buttonCinemticInverse;
         private Resources.RJControllers.RJButton.RJButton buttonCinematicDirect;
         private System.Windows.Forms.Panel panel2;
+        public System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
