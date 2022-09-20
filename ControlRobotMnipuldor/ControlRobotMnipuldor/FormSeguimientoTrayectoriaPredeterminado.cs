@@ -33,12 +33,18 @@ namespace ControlRobotMnipuldor
 
         private void buttonComienzaSeguir_Click(object sender, EventArgs e)
         {
-            string scriptPath = @"C:\Users\Hp\Desktop\GUI-TT\Untitled.py";
+
+            //string python = @"C:\Users\Hp\anaconda3\python.exe";
+
+            // python app to call 
+            string myPythonApp = @"C:\Users\Hp\OneDrive\Desktop\GUI-TTTrayectoriaScript.py";
+
+            string scriptPath = @"C:\Users\Hp\OneDrive\Desktop\GUI-TT\TrayectoriaScript.py";
             ScriptRuntime progam = Python.CreateRuntime();
             dynamic pyProgram = progam.UseFile(scriptPath);
 
-            //pyProgram.function_doSeguimiento(1);
-
+            pyProgram.function_doSeguimiento(1);
+            
 
 
         }

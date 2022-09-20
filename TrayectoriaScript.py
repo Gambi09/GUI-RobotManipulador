@@ -120,5 +120,4 @@ def function_angular (L1,L2,L3,h0,h1,x3,y3,z3):
 
     return spaceArticular
 
-
 function_doSeguimiento(1)

@@ -138,6 +138,7 @@ void loop() {
        break;
 
       case 'T':
+      
       x = data.charAt(1);
       readEncoder();
       break;
@@ -367,3 +368,46 @@ void verificaMotor(){
     move_finished=1;  // Reset move variable
   }
   }
+
+
+
+  String travel[3];
+  String sectionData;
+  int a;
+  int stringData;
+
+  
+  for(a = 0; a <data.length()-1; a++)
+  {
+    travel[a] = getData(data,' ',a);
+   }
+String getData(String data, char delimiter, int sequence)
+{
+  stringData = 0;
+  sectionData = "";
+
+  for (int i = 0; i < data.length() - 1; i++)
+  {
+
+    if (data[i] == delimiter)
+    {
+      stringData++;
+    }
+
+    else if (stringData == sequence)
+    {
+      sectionData.concat(data[i]);
+    }
+
+    else if (stringData > sequence)
+    {
+      return sectionData;
+      break;
+    }
+  }
+  return sectionData;
+}
+
+  
+
+    
